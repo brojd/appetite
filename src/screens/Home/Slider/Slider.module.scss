@@ -1,0 +1,46 @@
+.slider {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.current {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: relative;
+  top: 0;
+  animation: slideOut 5000ms infinite;
+
+}
+
+.next {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: absolute;
+  left: 100vw;
+  top: 0;
+  animation: slideIn 5000ms infinite;
+
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(0vw)
+  }
+
+  100% {
+    transform: translateX(-100vw)
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0)
+  }
+
+  100% {
+    transform: translateX(-100vw)
+  }
+}
