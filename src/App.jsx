@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.module.scss';
 import Navbar from './common/components/Navbar/Navbar';
-import Home from './screens/Home/Home';
+import Slider from './screens/Home/Slider/Slider';
 import { navLinks } from './common/config/dict';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
         <Navbar
           links={links}
         />
-        <Home />
+        <Slider />
       </div>
     );
   }

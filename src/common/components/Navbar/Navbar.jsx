@@ -4,7 +4,9 @@ import styles from './Navbar.module.scss';
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+
+    };
   }
 
   render() {

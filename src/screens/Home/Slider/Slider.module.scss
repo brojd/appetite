@@ -1,0 +1,53 @@
+.slider {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.slide {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: absolute;
+  transition: all 1s;
+
+}
+
+.slide-text {
+  color: black;
+  font-size: 3rem;
+  position: absolute;
+  bottom: 80px;
+  text-transform: uppercase;
+  right: 80px;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100vw)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0)
+  }
+
+  100% {
+    transform: translateX(-100vw)
+  }
+}
+
+.entering {
+  animation: slideIn 1s forwards;
+  transition: all 1s;
+}
+
+.exiting {
+  animation: slideOut 1s forwards;
+  transition: all 1s;
+}
