@@ -1,47 +1,95 @@
 import React, { Component } from 'react';
+import Transition from 'react-transition-group/Transition';
+import { sliderDict } from '../../../common/config/dict';
+import Slide from './Slide';
 import styles from './Slider.module.scss';
-import photo1 from '../../../common/pictures/close-up-colors.jpg';
-import photo2 from '../../../common/pictures/bakery.jpg';
-import photo3 from '../../../common/pictures/baking.jpg';
+import slide1 from '../../../common/pictures/cook-book.jpeg';
+import slide2 from '../../../common/pictures/meal-plan.jpeg';
+import slide3 from '../../../common/pictures/grocery-list.jpeg';
+import slide4 from '../../../common/pictures/timer.jpeg';
+
+const slides = [
+  {
+    id: 1,
+    imgSrc: slide1,
+    text: sliderDict.slides[0],
+    visible: true,
+  },
+  {
+    id: 2,
+    imgSrc: slide2,
+    text: sliderDict.slides[1],
+    visible: false,
+  },
+  {
+    id: 3,
+    imgSrc: slide3,
+    text: sliderDict.slides[2],
+    visible: false,
+  },
+  {
+    id: 4,
+    imgSrc: slide4,
+    text: sliderDict.slides[3],
+    visible: false,
+  },
+];
 
 class Slider extends Component {
   constructor(props) {
     super(props);
+    this.updateSlideIndex = this.updateSlideIndex.bind(this);
     this.state = {
-      sliderImages: [photo1, photo2, photo3],
-      currentIndex: 0,
-      currentImg: photo1,
-      nextImg: photo2,
+      currentSlideIndex: 0,
+      slides,
     };
   }
 
   componentDidMount() {
-    setInterval(
-      () => this.setState({
-        currentIndex: this.state.currentIndex === this.state.sliderImages.length -1
-          ? 0
-          : this.state.currentIndex + 1,
-        currentImg: this.state.sliderImages[this.state.currentIndex],
-        nextImg: this.state.sliderImages[this.state.currentIndex + 1],
-      }), 5000,
-    );
+    window.setInterval(this.updateSlideIndex, 5000);
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.updateSLideIndex);
+  }
+
+  updateSlideIndex() {
+    this.setState((prevState) => {
+      const isSlideTheLastOne = prevState.currentSlideIndex === slides.length - 1;
+      const newSlideIndex = isSlideTheLastOne ? 0 : prevState.currentSlideIndex + 1;
+      const newSlides = prevState.slides.map((slide, idx) => ({ ...slide, visible: idx === newSlideIndex }));
+      return {
+        currentSlideIndex: newSlideIndex,
+        slides: newSlides,
+      };
+    });
   }
 
   render() {
     return (
       <section className={styles.slider}>
-        <div>
-          <img
-            src={this.state.currentImg}
-            className={styles.current}
-          />
-        </div>
-        <div>
-          <img
-            src={this.state.nextImg}
-            className={styles.next}
-          />
-        </div>
+        {
+          this.state.slides.map(slide => (
+            <div key={slide.id}>
+              <Transition
+                in={slide.visible}
+                timeout={1000}
+                unmountOnExit
+              >
+                {
+                  state => (
+                    <div className={styles[state]}>
+                      <Slide
+                        imgSrc={slide.imgSrc}
+                        text={slide.text}
+                      />
+                    </div>
+                  )
+                }
+              </Transition>
+            </div>
+          ))
+        }
       </section>
     );
   }
