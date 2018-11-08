@@ -12,16 +12,20 @@ class Navbar extends Component {
   render() {
     return (
       <nav className={styles.container}>
-        <div className={styles.logo}>app<span className={styles['logo-span']}>etite</span></div>
+        <div className={styles.logo}>
+          app
+          <span className={styles['logo-span']}>etite</span>
+        </div>
         <div className={styles.navbar}>
           {
-            this.props.links.map(linkElem => (
+            this.props.links.map(link => (
               <button
                 type="button"
-                key={linkElem}
+                key={link}
                 className={styles['nav-button']}
+                onClick={() => this.props.onLinkClick(link.id)}
               >
-                {linkElem.link}
+                {link.text}
               </button>
             ))
           }
