@@ -1,7 +1,8 @@
-export const navLinks = {
-  planning: 'meal planning',
-  grocerylist: 'grocery list',
-  recipes: 'my recipes',
+export const navDict = {
+  home: 'home',
+  mealPlanning: 'meal planning',
+  groceryList: 'grocery list',
+  cookbook: 'my recipes',
   timer: 'kitchen timer',
 };
 
