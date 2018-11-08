@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MealRecipes from './RecipesList/MealRecipes';
+import styles from './Cookbook.module.scss';
 
 class Cookbook extends Component {
   constructor(props) {
@@ -7,7 +9,13 @@ class Cookbook extends Component {
 
   render() {
     return (
-      <div>Cookbook</div>
+      <div className={styles.cookbook}>
+        {
+          this.props.meals.map(meal => (
+            <MealRecipes mealName={meal.text} />
+          ))
+        }
+      </div>
     );
   }
 }

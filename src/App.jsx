@@ -7,12 +7,19 @@ import GroceryList from './screens/GroceryList/GroceryList';
 import Timer from './screens/Timer/Timer';
 import { navDict } from './common/config/dict';
 
-const links = [
-  { id: 'home', text: navDict.home, component: <Home /> },
-  { id: 'plannig', text: navDict.mealPlanning, component: <MealPlanning /> },
-  { id: 'groceryList', text: navDict.groceryList, component: <GroceryList /> },
-  { id: 'cookbook', text: navDict.cookbook, component: <Cookbook /> },
-  { id: 'timer', text: navDict.timer, component: <Timer /> },
+const meals = [
+  { id: 'breakfast', text: navDict.meals[0] },
+  { id: 'snack', text: navDict.meals[1] },
+  { id: 'lunch', text: navDict.meals[2] },
+  { id: 'dinner', text: navDict.meals[3] },
+];
+
+const linksObj = [
+  { id: 'home', text: navDict.links[0], component: <Home /> },
+  { id: 'cookbook', text: navDict.links[1], component: <Cookbook meals={meals} /> },
+  { id: 'plannig', text: navDict.links[2], component: <MealPlanning /> },
+  { id: 'groceryList', text: navDict.links[3], component: <GroceryList /> },
+  { id: 'timer', text: navDict.links[4], component: <Timer /> },
 ];
 
 class App extends Component {
@@ -21,13 +28,12 @@ class App extends Component {
     this.getComponentBasingOnId = this.getComponentBasingOnId.bind(this);
     this.handleNavLinkClick = this.handleNavLinkClick.bind(this);
     this.state = {
-      links,
       currentLinkId: 'home',
     };
   }
 
-  getComponentBasingOnId(linkId = '', links= []) {
-    const currentLinkObj = this.state.links.find(linkObj => linkObj.id === linkId);
+  getComponentBasingOnId(linkId = '', links = []) {
+    const currentLinkObj = links.find(linkObj => linkObj.id === linkId);
     return currentLinkObj.component;
   }
 
@@ -39,12 +45,12 @@ class App extends Component {
     return (
       <div>
         <Navbar
-          links={links}
+          links={linksObj}
           onLinkClick={this.handleNavLinkClick}
         />
         <div>
           {
-            this.getComponentBasingOnId(this.state.currentLinkId, this.state.links)
+            this.getComponentBasingOnId(this.state.currentLinkId, linksObj)
           }
         </div>
       </div>

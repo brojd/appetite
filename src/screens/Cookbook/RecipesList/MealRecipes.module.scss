@@ -1,0 +1,17 @@
+@import '../../../common/styles/Mixins.module';
+@import '../../../common/styles/Colors.module';
+
+.meal {
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+}
+
+.meal-heading {
+  font-size: 1.7rem;
+}
+
+.add-recipe-button {
+  @include button($add-btn, $white);
+  margin-top: 20px;
+}

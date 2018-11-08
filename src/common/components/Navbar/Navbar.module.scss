@@ -42,6 +42,9 @@
   font-weight: 100;
   font-family: 'Englebert', 'Verdana', 'sans-serif';
   cursor: pointer;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .nav-button:hover {
