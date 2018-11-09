@@ -22,19 +22,19 @@ const linksObj = [
   { id: 'timer', text: navDict.links[4], component: <Timer /> },
 ];
 
+const getComponentBasingOnId = (linkId = '', links = []) => {
+  const currentLinkObj = links.find(linkObj => linkObj.id === linkId);
+  return currentLinkObj.component;
+};
+
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.getComponentBasingOnId = this.getComponentBasingOnId.bind(this);
     this.handleNavLinkClick = this.handleNavLinkClick.bind(this);
     this.state = {
       currentLinkId: 'home',
     };
-  }
-
-  getComponentBasingOnId(linkId = '', links = []) {
-    const currentLinkObj = links.find(linkObj => linkObj.id === linkId);
-    return currentLinkObj.component;
   }
 
   handleNavLinkClick(clickedLink) {
@@ -42,6 +42,8 @@ class App extends Component {
   }
 
   render() {
+    const { state } = this;
+
     return (
       <div>
         <Navbar
@@ -50,7 +52,7 @@ class App extends Component {
         />
         <div>
           {
-            this.getComponentBasingOnId(this.state.currentLinkId, linksObj)
+            getComponentBasingOnId(state.currentLinkId, linksObj)
           }
         </div>
       </div>
