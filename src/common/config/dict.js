@@ -16,15 +16,35 @@ export const navDict = {
 
 export const sliderDict = {
   slides: [
-    'Gather all recipes in one place',
-    'Easily plan your meals',
-    'Generate grocery list',
-    'And enjoy cooking time',
+    'All recipes in one place',
+    'Plan your meals easily',
+    'Grab your grocery list',
+    'Enjoy cooking time',
   ],
 };
 
 export const modalDict = {
-  modal: [
+  inputs: [
     'Name of recipe',
+    'Course',
+    'Add new recipe',
+  ],
+  buttons: [
+    'Save Recipe',
+    'Cancel',
+  ],
+  coursesList: [
+    'Choose Course',
+    'Breakfast',
+    'Snack',
+    'Lunch',
+    'Dinner',
+  ],
+  ingredients: [
+    'Ingredients',
+    'Unit',
+    'Ingredient',
+    'Add Ingredient',
+    'Directions',
   ],
 };

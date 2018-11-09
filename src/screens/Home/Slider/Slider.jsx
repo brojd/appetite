@@ -3,7 +3,7 @@ import Transition from 'react-transition-group/Transition';
 import { sliderDict } from '../../../common/config/dict';
 import Slide from './Slide';
 import styles from './Slider.module.scss';
-import slide1 from '../../../common/pictures/cook-book.jpeg';
+import slide1 from '../../../common/pictures/cook-book1.jpeg';
 import slide2 from '../../../common/pictures/meal-plan.jpeg';
 import slide3 from '../../../common/pictures/grocery-list.jpeg';
 import slide4 from '../../../common/pictures/timer.jpeg';

@@ -19,6 +19,7 @@
 }
 
 .modal-main {
+  z-index: 0;
   position: fixed;
   background: white;
   padding: 30px;
@@ -30,20 +31,140 @@
   transform: translate(-50%,-50%);
 }
 
+.heading {
+  font-family: Englebert, Verdana, sans-serif;
+  font-size: 2.5rem;
+  text-align: left;
+  display: block;
+}
+
+.save-button {
+  @include button($add-btn, $white);
+  display: inline-block;
+  position: absolute;
+  right: 150px;
+  top: 50px;
+}
+
 .close-button {
   @include button($close-btn, $white);
+  display: inline-block;
   position: absolute;
   right: 50px;
+  top: 50px;
 }
 
 .recipe-name {
   font: {
     size: 1.5rem;
     family: 'Open Sans', 'Verdana', 'sans-serif';
+    weight: bold;
   }
-  width: 80%;
+  width: 70%;
   border: none;
   &:focus {
     outline: 0;
+  }
+  display: block;
+  margin-top: 30px;
+}
+
+.courses-list {
+  margin-top: 10px;
+  font: {
+    size: 1.3rem;
+    family: 'Open Sans', 'Verdana', 'sans-serif';
+  }
+  border: none;
+  &:focus {
+    outline: 0;
+  }
+  background: $white;
+  -webkit-appearance: none;
+  display: block;
+}
+
+.ingredients-input {
+  display: flex;
+}
+
+.ingredients-heading {
+  font: {
+    size: 1.3rem;
+    weight: bold;
+  }
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.label {
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.units-row {
+  display: inline;
+  width: 5%;
+}
+
+.unit-field {
+  display: flex;
+  width: 100%;
+  &:focus {
+    outline: 0;
+  }
+  font: {
+    size: 1rem;
+    family: 'Open Sans', 'Verdana', 'sans-serif';
+  }
+}
+
+.ingredients-row {
+  display: inline;
+  margin-left: 15px;
+  width: 20%;
+}
+
+.ingredient-field {
+  display: flex;
+  width: 100%;
+  &:focus {
+    outline: 0;
+  }
+  font: {
+    size: 1rem;
+    family: 'Open Sans', 'Verdana', 'sans-serif';
+  }
+}
+
+.add-ingredient-button {
+  @include button($add-btn, $white);
+  display: flex;
+  font: {
+    size: 0.8rem;
+    weight: bold;
+  }
+  margin-top: 10px;
+}
+
+.directions-heading {
+  font: {
+    size: 1.3rem;
+    weight: bold;
+  }
+  display: flex;
+}
+
+.directions {
+  display: block;
+  width: 98%;
+  &:focus {
+    outline: 0;
+  }
+  font: {
+    size: 1rem;
+    family: 'Open Sans', 'Verdana', 'sans-serif';
   }
 }
