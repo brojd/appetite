@@ -5,6 +5,7 @@ module.exports = {
     "operator-linebreak": [0]
   },
   "globals": {
-    "window": true
+    "window": true,
+    "document": true
   }
 };
