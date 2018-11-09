@@ -17,7 +17,7 @@ const meals = [
 const linksObj = [
   { id: 'home', text: navDict.links[0], component: <Home /> },
   { id: 'cookbook', text: navDict.links[1], component: <Cookbook meals={meals} /> },
-  { id: 'plannig', text: navDict.links[2], component: <MealPlanning /> },
+  { id: 'planning', text: navDict.links[2], component: <MealPlanning /> },
   { id: 'groceryList', text: navDict.links[3], component: <GroceryList /> },
   { id: 'timer', text: navDict.links[4], component: <Timer /> },
 ];

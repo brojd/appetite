@@ -1,3 +1,10 @@
 module.exports = {
-    "extends": "airbnb"
+  "extends": "airbnb",
+  "rules": {
+    "react/destructuring-assignment": ["error", "never"],
+    "operator-linebreak": [0]
+  },
+  "globals": {
+    "window": true
+  }
 };

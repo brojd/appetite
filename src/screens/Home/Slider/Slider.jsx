@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Transition from 'react-transition-group/Transition';
 import { sliderDict } from '../../../common/config/dict';
-import Slide from './Slide';
-import styles from './Slider.module.scss';
 import slide1 from '../../../common/pictures/cook-book1.jpeg';
 import slide2 from '../../../common/pictures/meal-plan.jpeg';
 import slide3 from '../../../common/pictures/grocery-list.jpeg';
 import slide4 from '../../../common/pictures/timer.jpeg';
+import Slide from './Slide';
+import styles from './Slider.module.scss';
 
 const slides = [
   {
@@ -50,14 +50,18 @@ class Slider extends Component {
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.updateSLideIndex);
+    window.clearInterval(this.updateSlideIndex);
   }
 
   updateSlideIndex() {
     this.setState((prevState) => {
       const isSlideTheLastOne = prevState.currentSlideIndex === slides.length - 1;
-      const newSlideIndex = isSlideTheLastOne ? 0 : prevState.currentSlideIndex + 1;
-      const newSlides = prevState.slides.map((slide, idx) => ({ ...slide, visible: idx === newSlideIndex }));
+      const newSlideIndex = isSlideTheLastOne
+        ? 0
+        : prevState.currentSlideIndex + 1;
+      const newSlides = prevState.slides.map(
+        (slide, idx) => ({ ...slide, visible: idx === newSlideIndex }),
+      );
       return {
         currentSlideIndex: newSlideIndex,
         slides: newSlides,

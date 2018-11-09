@@ -1,23 +1,25 @@
-import React, { Component } from 'react';
-import MealRecipes from './RecipesList/MealRecipes';
+import React from 'react';
+import PropTypes from 'prop-types';
+import MealRecipes from './MealRecipes/MealRecipes';
 import styles from './Cookbook.module.scss';
 
-class Cookbook extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className={styles.cookbook}>
-        {
-          this.props.meals.map(meal => (
-            <MealRecipes mealName={meal.text} />
-          ))
-        }
-      </div>
-    );
-  }
+function Cookbook(props) {
+  return (
+    <div className={styles.cookbook}>
+      {
+        props.meals.map(meal => (
+          <MealRecipes
+            key={meal.text}
+            mealName={meal.text}
+          />
+        ))
+      }
+    </div>
+  );
 }
+
+Cookbook.propTypes = {
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Cookbook;

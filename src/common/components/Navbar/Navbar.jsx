@@ -1,38 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Navbar.module.scss';
 
-class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  render() {
-    return (
-      <nav className={styles.container}>
-        <div className={styles.logo}>
-          app
-          <span className={styles['logo-span']}>etite</span>
-        </div>
-        <div className={styles.navbar}>
-          {
-            this.props.links.map(link => (
-              <button
-                type="button"
-                key={link}
-                className={styles['nav-button']}
-                onClick={() => this.props.onLinkClick(link.id)}
-              >
-                {link.text}
-              </button>
-            ))
-          }
-        </div>
-      </nav>
-    );
-  }
+function Navbar(props) {
+  return (
+    <nav className={styles.container}>
+      <div className={styles.logo}>
+        app
+        <span className={styles['logo-span']}>etite</span>
+      </div>
+      <div className={styles.navbar}>
+        {
+          props.links.map(link => (
+            <button
+              type="button"
+              key={link.id}
+              className={styles['nav-button']}
+              onClick={() => props.onLinkClick(link.id)}
+            >
+              {link.text}
+            </button>
+          ))
+        }
+      </div>
+    </nav>
+  );
 }
+
+Navbar.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+};
 
 export default Navbar;
